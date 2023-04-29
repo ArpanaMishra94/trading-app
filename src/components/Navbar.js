@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from '../assets/logo.png';
 import { GiHamburgerMenu } from "react-icons/gi";
-import './navbar.css'
+import './Navbar.css'
 
 const Navbar = () => {
     const [showMediaIcons, setShowMediaIcons] = useState(false);
