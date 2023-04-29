@@ -1,0 +1,55 @@
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.modal {
+    z-index: 999;
+}
+
+.overlay {
+    background: rgba(11,8,25,0.8);
+}
+
+.modal-content {
+    position: absolute;
+    top: 54.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    padding: 14px 28px;
+    border-radius: 3px;
+    min-width: 410px;
+    min-height: 461px;
+    width: 30%;
+    height: 46%;
+    background: #181627;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    z-index: 99;
+    overflow: auto;
+}
+
+.modal-close {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.close-button {
+    background: rgba(110, 86, 248, 0.15);
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+}
+
+.search-bar{
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+}
