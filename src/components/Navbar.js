@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import logo from '../assets/neoFi logo-fotor-bg-remover-20230429124814.png';
+import logo from '../assets/logo.png';
 import { GiHamburgerMenu } from "react-icons/gi";
-import './Navbar.css'
+import './navbar.css'
 
 const Navbar = () => {
     const [showMediaIcons, setShowMediaIcons] = useState(false);
 
     return (
-        <div className='main-nav'>
+        <nav className='main-nav'>
             <div className='logo'>
-                <img className='into-img' src={logo} alt='' />
-                <h2> NeoFi</h2>
+                <img src={logo} alt='' />
+                {/* <h2> NeoFi</h2> */}
             </div>
 
             <div className={
@@ -30,7 +30,7 @@ const Navbar = () => {
                     <GiHamburgerMenu size={20} style={{ color: "#fff" }} />
                 </div>
             </div>
-        </div>
+        </nav>
     )
 }
 

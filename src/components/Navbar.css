@@ -14,10 +14,6 @@
     display: flex;
 }
 
-.logo img {
-    width: 10%;
-}
-
 .logo h2 {
     font-style: normal;
     font-weight: 700;
@@ -97,8 +93,8 @@
 
     .mobile-menu {
         grid-column: 2/4;
-        position: relative;
         z-index: 99;
+        
     }
 
     .mobile-menu {
@@ -118,8 +114,8 @@
         height: 20rem;
         display: flex;
         justify-content: space-around;
-        /* flex-direction: column; */
-        /* flex-s: start; */
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .wallet-btn {
