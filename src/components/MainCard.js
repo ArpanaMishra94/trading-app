@@ -1,7 +1,6 @@
-import React from 'react'
-import './card.css'
-import { IoCaretDown } from "react-icons/io5";
-import icon from '../assets/image 61.png';
+import React from "react";
+import './MainCard.css'
+import Modal from "./Modal";
 
 const MainCard = () => {
 
@@ -14,15 +13,8 @@ const MainCard = () => {
                             <p>Current value</p>
                             <h3>₹ 24882</h3>
                         </div>
-                        <div className='select'>
-                            <div className='token'>
-                                <img src={icon} alt='' />
-                                <span>Ethereum</span>
-                            </div>
-                            <IoCaretDown size={18} style={{ color: "#6E56F8" }} />
-                        </div>
+                        <Modal />
                     </div>
-
                     <div className='row-2'>
                         <span>Amount you want to invest</span>
                         <div className='inputWithNumber'>
