@@ -9,24 +9,23 @@
 
 .form-container {
     width: 33.3%;
-    height: 59.3%;
+    height: 59.5%;
     min-width: 410px;
     min-height: 500px;
     background-color: #0B0819;
     border: 1px solid #C5C5C5;
     border-radius: 30px;
     padding: 0 1.5rem;
-}
+} 
 
 .notch-container {
     display: flex;
     justify-content: center;
     position: relative;
-    height: 0;
-
+    height: 4vh;
 }
 
-.list {
+.notch {
     width: 8rem;
     height: 8rem;
     border-radius: 100%;
@@ -38,26 +37,6 @@
     border: 1px solid;
     border-color: transparent #C5C5C5 #C5C5C5 #C5C5C5;
 }
-
-.active {
-    position: absolute;
-    background-color: #0B0819;
-    width: 10px;
-    height: 10px;
-    left: -3px;
-    top: 10px;
-    /* transform: translateY(-295%); */
-    border-color: #C5C5C5;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 60%;
-    border-top-right-radius: 100%;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-    border-top: 1px solid #C5C5C5;
-    border-right: 1px solid #C5C5C5;
-    transform: rotate(10deg);
-    }
 
 .icon {
     width: 6rem;
@@ -73,6 +52,7 @@
     width: 4.5rem;
     height: 4.5rem;
     display: block;
+    border-radius: 50%;
 }
 
 .form {
@@ -121,6 +101,7 @@
 .token img {
     width: 3rem;
     height: 3rem;
+    border-radius: 50%;
 }
 
 .token span {

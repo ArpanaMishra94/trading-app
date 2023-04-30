@@ -5,8 +5,9 @@ import { getCoinPrice } from '../../APIs';
 import Loader from "../Loader/Loader";
 
 const MainCard = () => {
-    const [currentPrice, setCurrentPrice] = useState();
-    const [amount, setAmount] = useState('0.00');
+    const [currentPrice, setCurrentPrice] = useState(0);
+    const [amount, setAmount] = useState(0.00);
+    const [estimateCoins, setEstimateCoins] = useState(0.00);
     const [loading, setLoading] = useState(true);
     const [coin, setCoin] = useState({
         name: 'Ethereum',
@@ -29,12 +30,21 @@ const MainCard = () => {
         }
     }
 
-    const estimateCoins = (e) => {
-        const totalAmount = e.target.value;
-        const CurrentAmount = currentPrice;
-        const numberOfCoins = (totalAmount / CurrentAmount).toFixed(2);
-        setAmount(numberOfCoins);
+    const calcEstimateCoins = () => {
+        const currPrice = currentPrice;
+        let numberOfCoins = 0;
+        if (currPrice === 0) {
+            numberOfCoins = 0;
+        }
+        else {
+            numberOfCoins = (amount / currentPrice).toFixed(2);
+        }
+        setEstimateCoins(numberOfCoins);
     };
+
+    const handleChange = (e) => {
+        setAmount(e.target.value);
+    }
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -47,9 +57,9 @@ const MainCard = () => {
         }
     }, [coin.id])
 
-    // useEffect(() => {
-    //     estimateCoins();
-    // }, [])
+    useEffect(() => {
+        calcEstimateCoins();
+    }, [amount])
 
     return (
         <main className='mainCard-container'>
@@ -59,13 +69,7 @@ const MainCard = () => {
                 ) : (
                     <div className='form-container'>
                         <div className="notch-container">
-                            <div className="list">
-                                {/* <div styles="--position: 0;" data-indicator className="indicator">
-                            <div className="corners"></div>
-                        </div> */}
-                                {/* <div className="active">
-                            <div className="corners"></div>
-                        </div> */}
+                            <div className="notch">
                                 <div className="icon">
                                     <img src={coin.image} alt={coin.symbol} />
                                 </div>
@@ -77,19 +81,19 @@ const MainCard = () => {
                                     <p>Current value</p>
                                     <h3>₹ {currentPrice}</h3>
                                 </div>
-                                <Modal coin={coin} setCoin={setCoin} setAmount={setAmount} />
+                                <Modal coin={coin} setCoin={setCoin} setAmount={setAmount} setEstimateCoins={setEstimateCoins} setCurrentPrice={setCurrentPrice} setLoading={setLoading} />
                             </div>
                             <div className='row-2'>
                                 <span>Amount you want to invest</span>
                                 <div className='inputWithNumber'>
-                                    <input type='number' placeholder='0.00' name="amt" onChange={estimateCoins} ></input>
+                                    <input type='number' placeholder='0.00' name="amt" value={amount} onChange={handleChange} disabled={currentPrice === 0}></input>
                                     <span>INR</span>
                                 </div>
                             </div>
 
                             <div className='row-3'>
                                 <span>Estimate Number of {coin.name} You will Get</span>
-                                <input type='number' placeholder={amount} disabled></input>
+                                <input type='number' value={estimateCoins} disabled></input>
                             </div>
                             <button>Buy</button>
                         </div>
