@@ -1,18 +1,14 @@
 Hosted Link = https://trading-app-orcin.vercel.app/
 
 
-# Getting Started with Create React App
+## Running the Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run the project locally, follow these steps:
 
-## Available Scripts
+1. Clone this repository to your local machine.
 
-In the project directory, you can run:
+2. Install the project dependencies using `npm install`.
 
-### `npm start`
+3. Start the development server using `npm start`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4. Open [http://localhost:3000](http://localhost:3000) in your web browser to view the app.
