@@ -1,11 +1,11 @@
 import axios from "axios";
 import URL from '../constants';
 
-const getCoins = async () => {
+const getCoinPrice = async (id) => {
     const response = await axios.get(
-        `${URL}/coins/markets?vs_currency=inr`
+        `${URL}/simple/price?vs_currencies=inr&ids=${id}`
     )
     return response;
 }
 
-export default getCoins;
+export default getCoinPrice;
