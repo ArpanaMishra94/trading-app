@@ -4,7 +4,8 @@ import Modal from "../Modal";
 import { getCoinPrice } from '../../APIs'
 
 const MainCard = () => {
-
+    const [currentPrice, setCurrentPrice] = useState();
+    const [amount, setAmount] = useState('0.00');
     const [coin, setCoin] = useState({
         name: 'Ethereum',
         image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
@@ -12,19 +13,25 @@ const MainCard = () => {
         id: "ethereum"
     });
 
-    const [currentPrice, setCurrentPrice] = useState();
 
     const fetchPrice = async (id) => {
         try {
             const { data } = await getCoinPrice(id);
             const inrPrice = data[`${id}`]['inr'];
             setCurrentPrice(inrPrice);
-            // console.log(currentPrice);
         }
         catch (error) {
             console.log(error);
         }
     }
+
+    const estimateCoins = (e) => {
+        const totalAmount = e.target.value;
+        const CurrentAmount = currentPrice;
+        const numberOfCoins = (totalAmount / CurrentAmount).toFixed(2);
+        setAmount(numberOfCoins);
+        console.log(numberOfCoins);
+    };
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -36,6 +43,10 @@ const MainCard = () => {
             clearInterval(timer);
         }
     }, [coin.id])
+
+    // useEffect(() => {
+    //     estimateCoins();
+    // }, [totalAmount])
 
     return (
         <main className='mainCard-container'>
@@ -64,16 +75,15 @@ const MainCard = () => {
                     <div className='row-2'>
                         <span>Amount you want to invest</span>
                         <div className='inputWithNumber'>
-                            <input type='number' placeholder='0.00'></input>
+                            <input type='number' placeholder='0.00' name="amt" onChange={estimateCoins} ></input>
                             <span>INR</span>
                         </div>
                     </div>
 
                     <div className='row-3'>
-                        <span>Estimate Number of ETH You will Get</span>
-                        <input type='number' placeholder='0.00'></input>
+                        <span>Estimate Number of {coin.name} You will Get</span>
+                        <input type='number' placeholder={amount} disabled></input>
                     </div>
-
                     <button>Buy</button>
                 </div>
             </div>
