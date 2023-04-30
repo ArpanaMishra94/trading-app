@@ -34,10 +34,11 @@ const Search = ({ coin, setCoin, toggleModal }) => {
                 <img src={image} alt='' />
                 <div className='name-check'>
                     <span>{name}</span>
-                    <div>
-                        <GoCheck size={20} id='checkIcon' />
-                    </div>
-
+                    {
+                        name === coin.name ? <div>
+                            <GoCheck size={20} id='checkIcon' />
+                        </div> : ''
+                    }
                 </div>
             </div>
         </li >
