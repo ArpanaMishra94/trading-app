@@ -4,10 +4,11 @@ import Search from "../Search/Search";
 import './Modal.css'
 import '../MainCard/MainCard.css'
 
-const Modal = ({ coin, setCoin }) => {
+const Modal = ({ coin, setCoin, setAmount }) => {
     const [modal, setModal] = useState(false);
 
     const toggleModal = () => {
+        setAmount('0.00');
         setModal(!modal);
     };
 

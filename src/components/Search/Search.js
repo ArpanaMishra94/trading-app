@@ -3,18 +3,23 @@ import './Search.css'
 import { BsSearch } from "react-icons/bs";
 import { GoCheck } from "react-icons/go";
 import { getCoins } from '../../APIs'
+import Loader from '../Loader/Loader';
 
 const Search = ({ coin, setCoin, toggleModal }) => {
     const [coins, setCoins] = useState([]);
     const [records, setRecords] = useState(coins);
+    const [loading, setLoading] = useState(true);
+
     const fetchCoins = async () => {
         try {
             const { data } = await getCoins();
             setCoins(data);
-            setRecords(data)
+            setRecords(data);
+            setLoading(false);
         }
         catch (error) {
             console.log(error);
+            setLoading(false);
         }
     }
 
@@ -45,20 +50,27 @@ const Search = ({ coin, setCoin, toggleModal }) => {
     )
 
     return (
-        <div className='search-container'>
-            <div className='input-wrapper'>
-                <BsSearch size={20} style={{ color: "#D2D2D2" }} />
-                <input placeholder='Search Chains' onChange={Filter} />
-            </div>
-            <div className='dataResult'>
-                <ul>
-                    {
-                        records.map(renderCoins)
-                    }
-                </ul>
-            </div>
-        </div>
-
+        <>
+            {
+                loading ? (
+                    <Loader />
+                ) : (
+                    <div className='search-container'>
+                        <div className='input-wrapper'>
+                            <BsSearch size={20} style={{ color: "#D2D2D2" }} />
+                            <input placeholder='Search Chains' onChange={Filter} />
+                        </div>
+                        <div className='dataResult'>
+                            <ul>
+                                {
+                                    records.map(renderCoins)
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                )
+            }
+        </>
     )
 }
 
