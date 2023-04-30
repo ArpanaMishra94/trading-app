@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { IoCaretDown, IoClose } from "react-icons/io5";
-import Search from "./Search";
+import Search from "../Search/Search";
 import './Modal.css'
-import './MainCard.css'
+import '../MainCard/MainCard.css'
 
-const Modal = () => {
+const Modal = ({ coin, setCoin }) => {
     const [modal, setModal] = useState(false);
-    const [coin, setCoin] = useState({});
 
     const toggleModal = () => {
         setModal(!modal);
@@ -14,10 +13,15 @@ const Modal = () => {
 
     return (
         <div className='select'>
-            <div className='token'>
-                <img src={coin.image} alt='' />
-                <span>{coin.name}</span>
-            </div>
+            {
+                coin ? (
+                    <div className='token'>
+                        <img src={coin.image} alt='' />
+                        <span>{coin.name}</span>
+                    </div>
+                ) : (<span>select</span>)
+            }
+
             <IoCaretDown size={18} style={{ color: "#6E56F8" }} onClick={toggleModal} />
             {
                 modal && (

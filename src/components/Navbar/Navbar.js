@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 import { GiHamburgerMenu } from "react-icons/gi";
 import './Navbar.css'
 
@@ -10,7 +10,6 @@ const Navbar = () => {
         <nav className='main-nav'>
             <div className='logo'>
                 <img src={logo} alt='' />
-                {/* <h2> NeoFi</h2> */}
             </div>
 
             <div className={
