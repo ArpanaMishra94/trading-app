@@ -15,18 +15,6 @@
     display: flex;
 }
 
-.logo h2 {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 29px;
-    line-height: 44px;
-    text-transform: uppercase;
-    background: linear-gradient(94.37deg, #3387D5 -5.94%, #7A06C9 115.34%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 .menu {
    grid-column: 3/4;
 }
