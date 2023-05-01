@@ -67,43 +67,39 @@ const MainCard = () => {
                 loading ? (
                     <Loader />
                 ) : (
-                    <div className="main-card">
-                        <div className='form-container'>
-                            <div className="notch-container">
-                                <div className="notch">
-                                    <div className="icon">
-                                        <img src={coin.image} alt={coin.symbol} />
-                                    </div>
+                    <div className='form-container'>
+                        <div className="notch-container">
+                            <div className="notch">
+                                <div className="icon">
+                                    <img src={coin.image} alt={coin.symbol} />
                                 </div>
-                            </div>
-                            <div className='form'>
-                                <div className='row-1'>
-                                    <div className='value'>
-                                        <p>Current value</p>
-                                        <h3>₹ {currentPrice}</h3>
-                                    </div>
-                                    <Modal coin={coin} setCoin={setCoin} setAmount={setAmount} setEstimateCoins={setEstimateCoins} setCurrentPrice={setCurrentPrice} setLoading={setLoading} />
-                                </div>
-                                <div className='row-2'>
-                                    <span>Amount you want to invest</span>
-                                    <div className='inputWithNumber'>
-                                        <input type='number' placeholder='0.00' name="amt" value={amount} onChange={handleChange} disabled={currentPrice === 0}></input>
-                                        <span>INR</span>
-                                    </div>
-                                </div>
-
-                                <div className='row-3'>
-                                    <span>Estimate Number of {coin.name} You will Get</span>
-                                    <input type='number' value={estimateCoins} disabled></input>
-                                </div>
-                                <button>Buy</button>
                             </div>
                         </div>
-                    </div>
+                        <div className='form'>
+                            <div className='row-1'>
+                                <div className='value'>
+                                    <p>Current value</p>
+                                    <h3>₹ {currentPrice}</h3>
+                                </div>
+                                <Modal coin={coin} setCoin={setCoin} setAmount={setAmount} setEstimateCoins={setEstimateCoins} setCurrentPrice={setCurrentPrice} setLoading={setLoading} />
+                            </div>
+                            <div className='row-2'>
+                                <span>Amount you want to invest</span>
+                                <div className='inputWithNumber'>
+                                    <input type='number' placeholder='0.00' name="amt" value={amount} onChange={handleChange} disabled={currentPrice === 0}></input>
+                                    <span>INR</span>
+                                </div>
+                            </div>
 
+                            <div className='row-3'>
+                                <span>Estimate Number of {coin.name} You will Get</span>
+                                <input type='number' value={estimateCoins} disabled></input>
+                            </div>
+                            <button>Buy</button>
+                        </div>
+                    </div>
                 )
             }
-
         </main>
     )
 }
