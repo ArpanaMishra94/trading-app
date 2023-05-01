@@ -10,6 +10,8 @@ const Search = ({ coin, setCoin, toggleModal }) => {
     const [records, setRecords] = useState(coins);
     const [loading, setLoading] = useState(true);
 
+
+    // Fetches the list of coins from an external API and updates the states.
     const fetchCoins = async () => {
         try {
             const { data } = await getCoins();
@@ -23,6 +25,7 @@ const Search = ({ coin, setCoin, toggleModal }) => {
         }
     }
 
+    // Filters the list of coins based on a given search string and updates the `records` state.
     const Filter = (event) => {
         setRecords(coins.filter(f => f.name.toLowerCase().includes(event.target.value)));
     }

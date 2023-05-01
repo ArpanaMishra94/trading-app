@@ -7,12 +7,12 @@ import '../MainCard/MainCard.css'
 const Modal = ({ coin, setCoin, setAmount, setEstimateCoins, setCurrentPrice, setLoading }) => {
     const [modal, setModal] = useState(false);
 
+    // Toggles the modal visibility and resets the input fields and state variables.
     const toggleModal = () => {
         setCurrentPrice(0);
         setEstimateCoins(0.00);
         setAmount(0.00);
-        setModal(!modal);
-        if (modal) {
+        setModal(!modal); if (modal) {
             setLoading(true);
         }
     };
@@ -27,7 +27,6 @@ const Modal = ({ coin, setCoin, setAmount, setEstimateCoins, setCurrentPrice, se
                     </div>
                 ) : (<span>select</span>)
             }
-
             <IoCaretDown size={18} style={{ color: "#6E56F8" }} onClick={toggleModal} />
             {
                 modal && (

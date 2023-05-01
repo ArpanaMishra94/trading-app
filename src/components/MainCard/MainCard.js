@@ -16,29 +16,45 @@ const MainCard = () => {
         id: "ethereum"
     });
 
-
+    // Fetches the current price of a cryptocurrency with the given ID from the API.
     const fetchPrice = async (id) => {
         try {
+            // Call the getCoinPrice API function to get the current price of the cryptocurrency
             const { data } = await getCoinPrice(id);
+
+            // Extract the INR price of the cryptocurrency from the response data
             const inrPrice = data[`${id}`]['inr'];
+
+            // Update the state with the current price and mark the loading as completed
             setCurrentPrice(inrPrice);
             setLoading(false);
         }
         catch (error) {
+            // Log any errors that occurred while fetching the price and mark the loading as completed
             console.log(error);
             setLoading(false);
         }
     }
 
+    // Calculates the estimated number of coins based on the current price and amount which we entered.
     const calcEstimateCoins = () => {
+
+        // Get the current price from the state
         const currPrice = currentPrice;
+
+        // Initialize the number of coins to zero
         let numberOfCoins = 0;
+
+        // If the current price is zero, set the number of coins to zero as well
         if (currPrice === 0) {
             numberOfCoins = 0;
         }
         else {
+            // Calculate the estimated number of coins based on the amount and current price
             numberOfCoins = (amount / currentPrice).toFixed(2);
         }
+
+        // Set the estimated number of coins in the state
         setEstimateCoins(numberOfCoins);
     };
 
@@ -46,12 +62,15 @@ const MainCard = () => {
         setAmount(e.target.value);
     }
 
+    // A hook that fetches the price of a cryptocurrency with the given ID every 5 seconds.
     useEffect(() => {
+
+        // Set up a timer to fetch the price every 5 seconds
         const timer = setInterval(() => {
             fetchPrice(coin.id);
         }, 5000)
 
-
+        // Clean up the timer when the component unmounts or when the ID of the cryptocurrency changes
         return () => {
             clearInterval(timer);
         }
