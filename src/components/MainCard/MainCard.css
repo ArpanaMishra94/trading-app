@@ -30,13 +30,13 @@
     width: 8rem;
     height: 8rem;
     border-radius: 100%;
-    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(-15%);
-    border: 2px solid;
-    border-color: transparent #1C1731 #1C1731 #1C1731;
+    transform: translateY(-45%);
+    background: linear-gradient(black, black) padding-box,
+    linear-gradient(0deg, #1C1731 56%, black 44%) border-box;
+    border: 2px solid transparent;
 }
 
 .icon {
