@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './Search.css'
 import { BsSearch } from "react-icons/bs";
 import { GoCheck } from "react-icons/go";
 import { getCoins } from '../../APIs'
 import Loader from '../Loader/Loader';
+import { CoinContext } from '../../context';
 
-const Search = ({ coin, setCoin, toggleModal }) => {
+const Search = ({ toggleModal }) => {
     const [coins, setCoins] = useState([]);
     const [records, setRecords] = useState(coins);
     const [loading, setLoading] = useState(true);
+    const { coin, setCoin } = useContext(CoinContext);
 
 
     // Fetches the list of coins from an external API and updates the states.

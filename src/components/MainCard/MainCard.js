@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './MainCard.css'
 import Modal from "../Modal";
 import { getCoinPrice } from '../../APIs';
 import Loader from "../Loader/Loader";
+import { CoinContext } from "../../context";
 
 const MainCard = () => {
     const [currentPrice, setCurrentPrice] = useState(0);
     const [amount, setAmount] = useState(0.00);
     const [estimateCoins, setEstimateCoins] = useState(0.00);
     const [loading, setLoading] = useState(true);
-    const [coin, setCoin] = useState({
-        name: 'Ethereum',
-        image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-        symbol: "eth",
-        id: "ethereum"
-    });
+    const { coin } = useContext(CoinContext);
+    // const [coin, setCoin] = useState({
+    //     name: 'Ethereum',
+    //     image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
+    //     symbol: "eth",
+    //     id: "ethereum"
+    // });
 
     // Fetches the current price of a cryptocurrency with the given ID from the API.
     const fetchPrice = async (id) => {
@@ -100,7 +102,7 @@ const MainCard = () => {
                                     <p>Current value</p>
                                     <h3>₹ {currentPrice}</h3>
                                 </div>
-                                <Modal coin={coin} setCoin={setCoin} setAmount={setAmount} setEstimateCoins={setEstimateCoins} setCurrentPrice={setCurrentPrice} setLoading={setLoading} />
+                                <Modal setAmount={setAmount} setEstimateCoins={setEstimateCoins} setCurrentPrice={setCurrentPrice} setLoading={setLoading} />
                             </div>
                             <div className='row-2'>
                                 <span>Amount you want to invest</span>

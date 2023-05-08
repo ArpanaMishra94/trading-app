@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { IoCaretDown, IoClose } from "react-icons/io5";
 import Search from "../Search/Search";
 import './Modal.css'
 import '../MainCard/MainCard.css'
+import { CoinContext } from "../../context";
 
-const Modal = ({ coin, setCoin, setAmount, setEstimateCoins, setCurrentPrice, setLoading }) => {
+const Modal = ({ setAmount, setEstimateCoins, setCurrentPrice, setLoading }) => {
     const [modal, setModal] = useState(false);
+    const { coin, setCoin } = useContext(CoinContext);
 
     // Toggles the modal visibility and resets the input fields and state variables.
     const toggleModal = () => {
         setCurrentPrice(0);
         setEstimateCoins(0.00);
         setAmount(0.00);
-        setModal(!modal); if (modal) {
+        setModal(!modal);
+        if (modal) {
             setLoading(true);
         }
     };
@@ -39,7 +42,7 @@ const Modal = ({ coin, setCoin, setAmount, setEstimateCoins, setCurrentPrice, se
                                 </div>
                             </div>
                             <div className="search-bar">
-                                <Search coin={coin} setCoin={setCoin} toggleModal={toggleModal} />
+                                <Search toggleModal={toggleModal} />
                             </div>
                         </div>
                     </div>
